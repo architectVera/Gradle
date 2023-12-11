@@ -34,7 +34,6 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.register<Exec>("npmInstall") {
-    dependsOn("KotlinCompile")
     workingDir = file("ui")
     commandLine("npm", "i")
 }
@@ -50,15 +49,14 @@ tasks.register<Copy>("copyUi") {
     from("ui/dist") {
         include("index.html")
         include("app.js")
-        into("css") {
-            from("css")
-        }
     }
     into("src/main/resources")
+    from("ui/dist/css")
+    into("src/main/resources/css")
 }
 
-tasks.withType<BootRun> {
-    dependsOn(copyUi)
+tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
+    dependsOn("copyUi")
 }
 
 
