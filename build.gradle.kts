@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.springframework.boot.gradle.tasks.bundling.BootRun
 
 plugins {
   	id("org.springframework.boot") version "3.1.0"
@@ -25,7 +24,6 @@ dependencies {
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-	classpath("org.springframework.boot:spring-boot-gradle-plugin:3.1.0")
 }
 
 tasks.withType<KotlinCompile> {
