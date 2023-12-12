@@ -46,13 +46,8 @@ tasks.register<Exec>("compileUi") {
 
 tasks.register<Copy>("copyUi") {
     dependsOn("compileUi")
-    from("ui/dist") {
-        include("index.html")
-        include("app.js")
-    }
+    from("ui/dist/index.html", "ui/dist/app.js", "ui/dist/css")
     into("src/main/resources")
-    from("ui/dist/css")
-    into("src/main/resources/css")
 }
 
 tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
